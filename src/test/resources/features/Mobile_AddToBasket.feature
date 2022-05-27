@@ -10,7 +10,6 @@ Feature: Mobile | Add to basket
   And The user enters valid credentials for mobile
   And The user clicks hamburger menu button
   And The user navigates to "Erkek" "Ayakkabı" category for mobile
-  Then The user clicks "Tekrar Gösterme" button
   And The user clicks anyone product
   And The user chooses color and size
   And The user clicks "SEPETE GÖZAT" button
