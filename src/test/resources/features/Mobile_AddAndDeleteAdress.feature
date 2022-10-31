@@ -6,7 +6,7 @@ Feature: Mobile | Add new adress and delete
     Given The user visits Columbia homepage
     And The user verifies redirected to homepage
     And The user clicks login button
-    And The user clicks Giris Yap button
+    And The user clicks "Giriş Yap" buttonn
     When The user enters valid credentials for mobile
     And The user clicks login button
     And The user clicks arrow button
@@ -21,4 +21,4 @@ Feature: Mobile | Add new adress and delete
     And The user verifies "Teslimat adresi bulunmamaktadır." message
     Then The user clicks hamburger menu button
     And The user clicks Çıkış button
-    And The user verifies redirected to homepage
+    And The user verifies redirected to "/?logout=true" page

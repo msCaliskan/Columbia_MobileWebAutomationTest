@@ -20,7 +20,7 @@ Feature: Mobile | Change password of the account
     Then The user verifies "Şifrenizi başarıyla değiştirdiniz" message
     And The user clicks hamburger menu button
     And The user clicks Çıkış button
-    And The user verifies redirected to homepage
+    And The user verifies redirected to "/?logout=true" page
 
   Scenario: The user enters wrong old password
 
@@ -28,7 +28,7 @@ Feature: Mobile | Change password of the account
     Then The user verifies "Girmiş olduğunuz parola eski parola ile uyuşmamaktadır." message
     And The user clicks hamburger menu button
     And The user clicks Çıkış button
-    And The user verifies redirected to homepage
+    And The user verifies redirected to "/?logout=true" page
 
   Scenario: The user enters different new and confirm new passwords
 
@@ -36,4 +36,4 @@ Feature: Mobile | Change password of the account
     Then The user verifies "Girilen parolalar uyuşmamaktadır." message
     And The user clicks hamburger menu button
     And The user clicks Çıkış button
-    And The user verifies redirected to homepage
+    And The user verifies redirected to "/?logout=true" page

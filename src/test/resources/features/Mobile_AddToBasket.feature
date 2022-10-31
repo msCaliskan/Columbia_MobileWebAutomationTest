@@ -9,20 +9,20 @@ Feature: Mobile | Add to basket
   And The user clicks Giris Yap button
   And The user enters valid credentials for mobile
   And The user clicks hamburger menu button
-  And The user navigates to "Erkek" "Ayakkabı" category for mobile
-  And The user clicks anyone product
-  And The user chooses color and size
-  And The user clicks "SEPETE GÖZAT" button
-  And The user verifies redirected to "/basket" page
-  When The user clicks "Sonraki Adım" button
+  And The user navigates to "Erkek" "Yeni Gelenler" category
+  And The user verifies redirected to "/erkek-yeni-gelenler" page
+  And The user clicks any product
+  And The user chooses size
+  And The user clicks "SİPARİŞİ TAMAMLA" button
   And The user verifies redirected to "/checkout" page
   And The user verifies "Kayıtlı adresiniz bulunmamaktadır." message
   And The user clicks "Yeni Adres Ekle" button
   When The user enters valid informations
   And The user clicks "Kaydet" button
+  And The user closes popUp
   And The user clicks "Ödeme Adımına Geç" button
   And The user enters invalid informations
-  And The user selects 3D Secure, Ön Bilgilendirme and Mesafeli Satış Sözleşmesi buttons for mobile
+  And The user selects 3D Secure, On Bilgilendirme and Mesafeli Satis Sozlesmesi buttons
   And The user clicks "Siparişi Tamamla" button
   And The user verifies "Kart numarası geçersizdir" message
   Then The user clicks Sepetim button
@@ -36,4 +36,4 @@ Feature: Mobile | Add to basket
   And The user verifies "Teslimat adresi bulunmamaktadır." message
   And The user clicks hamburger menu button
   Then The user clicks Çıkış button
-  And The user verifies redirected to homepage
+  And The user verifies redirected to "/?logout=true" page

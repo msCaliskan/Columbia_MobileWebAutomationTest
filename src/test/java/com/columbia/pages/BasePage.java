@@ -37,6 +37,13 @@ public abstract class BasePage {
     BrowserUtils.waitFor(1);
     }
 
+    public static void clickButtonn(String button){
+        String button_Loc = "(//*[text()='"+button+"'])[2]";
+        BrowserUtils.waitForClickablility(Driver.get().findElement(By.xpath(button_Loc)),5);
+        Driver.get().findElement(By.xpath(button_Loc)).click();
+        BrowserUtils.waitFor(1);
+    }
+
     /**
      * This method will navigate user to the specific module in useinsider application.
      * For example: if tab is equals to More, and module equals to Careers,
@@ -48,22 +55,20 @@ public abstract class BasePage {
      */
     public static void navigateToModule(String tab, String module) {
         String tabLocator = "(//p[text()='"+tab+"'])[2]";
-        String moduleLocator = "(//p[text()='"+module+"'])[2]";
+        String moduleLocator = "//p[text()='"+module+"']";
 
 
         try {
             BrowserUtils.waitFor(1);
             WebElement tabElement = Driver.get().findElement(By.xpath(tabLocator));
-            Actions actions = new Actions(Driver.get());
-            actions.moveToElement(tabElement).perform();
+            tabElement.click();
         } catch (Exception e) {
             BrowserUtils.clickWithWait(By.xpath(tabLocator), 5);
         }
         try {
             BrowserUtils.waitForPresenceOfElement(By.xpath(moduleLocator), 5);
             BrowserUtils.waitForVisibility(By.xpath(moduleLocator), 5);
-            BrowserUtils.scrollToElement(Driver.get().findElement(By.xpath(moduleLocator)));
-            Driver.get().findElement(By.xpath(moduleLocator)).click();
+            BrowserUtils.clickWithJS(Driver.get().findElement(By.xpath(moduleLocator)));
         } catch (Exception e) {
             BrowserUtils.clickWithTimeOut(Driver.get().findElement(By.xpath(moduleLocator)),  5);
 

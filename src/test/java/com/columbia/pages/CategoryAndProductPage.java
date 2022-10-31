@@ -2,6 +2,7 @@ package com.columbia.pages;
 
 import com.columbia.utilities.BrowserUtils;
 import com.columbia.utilities.Driver;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,15 +20,6 @@ public class CategoryAndProductPage extends BasePage {
     @FindBy(xpath = "//div[contains(@class,'MuiButton-disableElevation')]") public WebElement hearthBtn_Loc;
 
     @FindBy(xpath = "//*[contains(@class,'MuiTypography-button')]") public WebElement sepeteEkle_Loc;
-
-    @FindBy(xpath = "//*[@class='MuiTypography-root jss140 MuiTypography-body1']") public List<WebElement> productName_Loc;
-
-    @FindBy(xpath = "(//*[@class='MuiSvgIcon-root'])[5]") public WebElement erkekCategory_Loc;
-
-    @FindBy(xpath = "(//*[@class='MuiSvgIcon-root'])[4]") public WebElement kadinCategory_Loc;
-
-
-
 
     public void clickProductRandom(){
 
@@ -55,27 +47,9 @@ public class CategoryAndProductPage extends BasePage {
         }
     }
 
-    public void searchResult(String string){
-
-        List<String> allNames = new ArrayList<>();
-        for (WebElement element : prodList_Loc) {
-        allNames.add(element.getText());
-        }
-        for (int i = 0; i < productName_Loc.size(); i++) {
-             allNames.get(i).contains(string);
+    public void searchResult(String string) {
+        for (int i = 0; i < prodList_Loc.size(); i++) {
+            Assert.assertTrue("Search result value failed at instance [" + i + "].", prodList_Loc.get(i).getText().contains(string));
         }
     }
-
-    public static void navigateMobile(String tab, String module){
-        String tabLocator = "(//p[text()='"+tab+"'])[2]";
-        String moduleLocator = "(//p[text()='"+module+"'])[2]";
-
-        Driver.get().findElement(By.xpath(tabLocator)).click();
-        BrowserUtils.waitForClickablility(Driver.get().findElement(By.xpath(moduleLocator)),5);
-       // BrowserUtils.hover(Driver.get().findElement(By.xpath(moduleLocator)));
-        Driver.get().findElement(By.xpath(moduleLocator)).click();
-        BrowserUtils.waitFor(1);
-
-    }
-
 }

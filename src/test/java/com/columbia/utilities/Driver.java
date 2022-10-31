@@ -27,8 +27,11 @@ public class Driver {
         if (ConfigurationReader.get("browser").equals("mobile")) {
 
             if (driver1 == null) {
+
                 WebDriverManager.chromedriver().setup();
-                driver1 = new ChromeDriver();
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("User-Agent='Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1'");
+                driver1 = new ChromeDriver(options);
                 DevTools devTools = driver1.getDevTools();
                 devTools.createSession();
 
