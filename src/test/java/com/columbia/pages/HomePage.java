@@ -47,13 +47,6 @@ public class HomePage extends BasePage{
         searchBox_Loc.sendKeys(string+Keys.ENTER);
         BrowserUtils.waitFor(1);
     }
-    public void closePopUp(){
-        BrowserUtils.waitFor(2);
-        if (popUp2_Loc.isDisplayed()) {
-            popUp2_Loc.click();
-            BrowserUtils.waitFor(1);
-        }
-    }
 
     public void clickLoginButton(){
         BrowserUtils.waitForClickablility(loginBtn_Loc,5);
