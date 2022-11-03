@@ -7,7 +7,7 @@ Feature: Mobile | Add new adress and delete
     And The user verifies redirected to homepage
     And The user clicks login button
     And The user clicks "Giriş Yap" buttonn
-    When The user enters valid credentials for mobile
+    When The user enters valid credentials
     And The user clicks login button
     And The user clicks arrow button
     Then The user clicks "Adreslerim" button

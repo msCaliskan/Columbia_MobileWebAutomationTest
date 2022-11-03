@@ -23,7 +23,6 @@ public class StepDefinitions {
     @Given("The user visits Columbia homepage")
     public void the_user_visits_Columbia_homepage() {
         homePage.gotoHomePage();
-        BrowserUtils.waitFor(1);
     }
 
     @And("The user verifies redirected to homepage")
@@ -31,31 +30,22 @@ public class StepDefinitions {
         HomePage.checkHomePage();
     }
 
-    @Given("The user hovers to login button")
-    public void the_user_hovers_to_login_button() {
-        BrowserUtils.hover(homePage.loginBtn_Loc);
-    }
-
     @When("The user clicks login button")
     public void the_user_clicks_login_button() {
-        BrowserUtils.waitFor(1);
-        homePage.loginBtn_Loc.click();
-        BrowserUtils.waitFor(2);
+        homePage.clickLoginButton();
     }
     @And("The user enters invalid email for mobile")
     public void theUserEntersInvalidEmailForMobile() {
-        homePage.invalidEmailMobile();
+        loginRegisterPage.invalidEmailMobile();
     }
 
     @And("The user enters invalid password for mobile")
     public void theUserEntersInvalidPasswordForMobile() {
-        homePage.invalidPasswordMobile();
+        loginRegisterPage.invalidPasswordMobile();
     }
     @Given("The user clicks hamburger menu button")
     public void the_user_clicks_hamburger_menu_button() {
-        BrowserUtils.waitFor(2);
-        homePage.hamburgerMenuBtn_Loc.click();
-        BrowserUtils.waitFor(1);
+        homePage.clickHamburgerMenuButton();
     }
 
     @When("The user verifies redirected to {string} page")
@@ -104,8 +94,7 @@ public class StepDefinitions {
 
     @When("The user clicks hearth button")
     public void the_user_clicks_hearth_button() {
-        categoryAndProductPage.hearthBtn_Loc.click();
-        BrowserUtils.waitFor(1);
+        categoryAndProductPage.clickHearthButton();
     }
 
     @When("The user verifies {string} message")
@@ -128,11 +117,6 @@ public class StepDefinitions {
         checkoutPage.checkBox();
     }
 
-    @Then("The user clicks Back button")
-    public void the_user_clicks_Back_button() {
-        Driver.get().navigate().back();
-    }
-
     @Then("The user enters forget password email adress")
     public void the_user_enters_forget_password_email_adress() {
         homePage.email_Loc.sendKeys(ConfigurationReader.get("user_email"));
@@ -147,29 +131,14 @@ public class StepDefinitions {
         categoryAndProductPage.searchResult(string);
     }
 
-    @And("The user enters valid credentials for mobile")
-    public void theUserEntersValidCredentialsForMobile() {
+    @And("The user enters valid credentials")
+    public void theUserEntersValidCredentials() {
         loginRegisterPage.mobilLogin();
-    }
-
-    @And("The user clicks find button")
-    public void theUserClicksFindButton() {
-        homePage.findBtn_Loc.click();
     }
 
     @Then("The user clicks Şifremi Sıfırla button")
     public void theUserClicksŞifremiSıfırlaButton() {
         accountPage.sifremiSifirla_Loc.click();
-    }
-
-    @And("The user closes pop-Ups")
-    public void theUserClosesPopUps() {
-        homePage.closePopUp();
-    }
-
-    @And("The user closes arrows")
-    public void theUserClosesArrows() {
-        accountPage.closeArrow();
     }
 
     @Then("The user clicks Sepetim button")
@@ -205,6 +174,11 @@ public class StepDefinitions {
     @And("The user clicks {string} buttonn")
     public void theUserClicksButtonn(String button) {
         BasePage.clickButtonn(button);
+    }
+
+    @And("The user enters valid price")
+    public void theUserEntersValidPrice() {
+        categoryAndProductPage.validPrice();
     }
 
     @And("The user clicks Çıkış button")

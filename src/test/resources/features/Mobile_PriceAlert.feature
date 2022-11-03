@@ -1,6 +1,7 @@
-Feature: Mobile | Add to favorites and delete
+Feature: Mobile | Price Alert
+
   @smoke
-  Scenario: The user can add to favorites and delete
+  Scenario: The user can select to PriceAlert and delete
 
     Given The user visits Columbia homepage
     And The user verifies redirected to homepage
@@ -11,13 +12,15 @@ Feature: Mobile | Add to favorites and delete
     And The user navigates to "Erkek" "Yeni Gelenler" category
     And The user verifies redirected to "/erkek-yeni-gelenler" page
     And The user clicks any product
-    And The user clicks hearth button
+    Then The user clicks " Fiyatı Düşünce Haber Ver" button
+    And The user enters valid price
+    Then The user clicks "Kaydet" button
     And The user clicks login button
     And The user clicks arrow button
-    Then The user clicks "Favorilerim" button
-    And The user verifies redirected to "/account/favorites" page
-    When The user clicks hearth button
-    And The user verifies "Favori ürün bulunmamaktadır." message
+    Then The user clicks "Fiyat Alarmlarım" button
+    And The user verifies redirected to "/account/priceSubscription" page
+    And The user clicks "Sil" button
+    And The user verifies "Fiyat alarmı bulunmamaktadır." message
     And The user clicks hamburger menu button
     Then The user clicks Çıkış button
     And The user verifies redirected to "/?logout=true" page

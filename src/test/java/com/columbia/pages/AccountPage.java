@@ -2,15 +2,11 @@ package com.columbia.pages;
 
 
 import com.columbia.utilities.BrowserUtils;
-import com.columbia.utilities.ConfigurationReader;
 import com.columbia.utilities.Driver;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -28,8 +24,6 @@ public class AccountPage extends BasePage{
 
     @FindBy(xpath = "(//*[text()='Şifremi Sıfırla'])[2]") public WebElement sifremiSifirla_Loc;
 
-    @FindBy(xpath = "//*[contains(@class, 'ins-side-menu-arrow ins')]") public WebElement popUpArrow_Loc;
-
     @FindBy(xpath = "(//button[contains(@class, 'MuiButtonBase-root MuiIconButton-root jss')])[2]") public WebElement cikisYap_Loc;
 
     public void getInformation(String name, String lastname, String email, String phone){
@@ -42,12 +36,6 @@ public class AccountPage extends BasePage{
         assertEquals(lastname,actlastName);
         assertEquals(email,actEmail);
         assertEquals(phone,actPhone);
-    }
-
-    public void closeArrow(){
-        if (popUpArrow_Loc.getAttribute("class").contains("opened")){
-            popUpArrow_Loc.click();
-        }
     }
 
     public static void verifyMessage(){

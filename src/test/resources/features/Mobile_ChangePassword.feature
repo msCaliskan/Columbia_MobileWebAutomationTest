@@ -7,7 +7,7 @@ Feature: Mobile | Change password of the account
     And The user verifies redirected to homepage
     And The user clicks login button
     And The user clicks Giris Yap button
-    And The user enters valid credentials for mobile
+    And The user enters valid credentials
     And The user clicks login button
     And The user clicks arrow button
     And The user clicks "Şifre Değiştir" button

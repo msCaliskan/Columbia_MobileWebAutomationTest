@@ -1,13 +1,11 @@
 package com.columbia.pages;
 
 import com.columbia.utilities.BrowserUtils;
-import com.columbia.utilities.Driver;
 import org.junit.Assert;
-import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -20,6 +18,8 @@ public class CategoryAndProductPage extends BasePage {
     @FindBy(xpath = "//div[contains(@class,'MuiButton-disableElevation')]") public WebElement hearthBtn_Loc;
 
     @FindBy(xpath = "//*[contains(@class,'MuiTypography-button')]") public WebElement sepeteEkle_Loc;
+
+    @FindBy(css = "#filled-number") public WebElement priceHolder_Loc;
 
     public void clickProductRandom(){
 
@@ -51,5 +51,26 @@ public class CategoryAndProductPage extends BasePage {
         for (int i = 0; i < prodList_Loc.size(); i++) {
             Assert.assertTrue("Search result value failed at instance [" + i + "].", prodList_Loc.get(i).getText().contains(string));
         }
+    }
+
+    public void validPrice(){
+        String price = priceHolder_Loc.getAttribute("value");
+
+        double b = Double.parseDouble(price);
+        int c= (int)Math.round(b);
+
+        int d = c-5;
+
+        priceHolder_Loc.sendKeys(Keys.CONTROL+"a");
+        priceHolder_Loc.sendKeys(Keys.DELETE);
+        BrowserUtils.waitFor(1);
+        priceHolder_Loc.sendKeys(Integer.toString(d));
+        BrowserUtils.waitFor(2);
+    }
+
+    public void clickHearthButton(){
+        BrowserUtils.waitForClickablility(hearthBtn_Loc,5);
+        hearthBtn_Loc.click();
+        BrowserUtils.waitFor(1);
     }
 }

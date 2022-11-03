@@ -9,7 +9,7 @@ Feature: Mobile | Login with valid and invalid credentials
     And The user clicks Giris Yap button
 
   Scenario: Login with valid credentials
-    And The user enters valid credentials for mobile
+    And The user enters valid credentials
     And The user clicks login button
     And The user verifies redirected to "/account/info" page
     And The user checks "Musa", "Caliskan", "musainveonn@gmail.com" and "0(553) 570 66 80" informations

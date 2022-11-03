@@ -12,6 +12,7 @@ public class LoginRegisterPage extends BasePage{
     @FindBy(css = "#email") public WebElement email_Loc;
 
     @FindBy(css = "#password") public WebElement password_Loc;
+
     public void mobilLogin(){
         String email = ConfigurationReader.get("user_email");
         String password = ConfigurationReader.get("user_password");
@@ -20,5 +21,16 @@ public class LoginRegisterPage extends BasePage{
         password_Loc.sendKeys(password);
         Driver.get().findElement(By.xpath("(//span[text()='Giriş Yap'])[3]")).click();
         BrowserUtils.waitFor(1);
+    }
+
+    public void invalidEmailMobile(){
+        email_Loc.sendKeys(ConfigurationReader.get("guest_email"));
+        password_Loc.sendKeys(ConfigurationReader.get("user_password"));
+        Driver.get().findElement(By.xpath("(//span[text()='Giriş Yap'])[3]")).click();
+    }
+    public void invalidPasswordMobile(){
+        email_Loc.sendKeys(ConfigurationReader.get("user_email"));
+        password_Loc.sendKeys("Inveon34...");
+        Driver.get().findElement(By.xpath("(//span[text()='Giriş Yap'])[3]")).click();
     }
 }
