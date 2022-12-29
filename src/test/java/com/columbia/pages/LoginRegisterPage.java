@@ -13,7 +13,18 @@ public class LoginRegisterPage extends BasePage{
 
     @FindBy(css = "#password") public WebElement password_Loc;
 
+    @FindBy(xpath = "//*[text()='Tekrar Gösterme']") public WebElement popUp_Loc;
+
     public void mobilLogin(){
+        BrowserUtils.waitFor(5);
+
+        try {
+            BrowserUtils.waitForClickablility(popUp_Loc,2);
+            popUp_Loc.click();
+        }catch (Exception e){
+            BrowserUtils.waitFor(1);
+        }
+
         String email = ConfigurationReader.get("user_email");
         String password = ConfigurationReader.get("user_password");
 

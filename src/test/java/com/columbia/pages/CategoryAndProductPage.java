@@ -21,6 +21,8 @@ public class CategoryAndProductPage extends BasePage {
 
     @FindBy(css = "#filled-number") public WebElement priceHolder_Loc;
 
+    @FindBy(xpath = "//*[text()='Tekrar Gösterme']") public WebElement popUp_Loc;
+
     public void clickProductRandom(){
 
         Random rn = new Random();
@@ -72,5 +74,16 @@ public class CategoryAndProductPage extends BasePage {
         BrowserUtils.waitForClickablility(hearthBtn_Loc,5);
         hearthBtn_Loc.click();
         BrowserUtils.waitFor(1);
+    }
+
+    public void closePopUp() {
+        BrowserUtils.waitFor(5);
+
+        try {
+            BrowserUtils.waitForClickablility(popUp_Loc, 2);
+            popUp_Loc.click();
+        } catch (Exception e) {
+            BrowserUtils.waitFor(1);
+        }
     }
 }

@@ -190,4 +190,9 @@ public class StepDefinitions {
     public void theUserClosesPopUp() {
         checkoutPage.closePopUp();
     }
+
+    @And("The user closes popUps")
+    public void theUserClosesPopUps() {
+        categoryAndProductPage.closePopUp();
+    }
 }

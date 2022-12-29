@@ -9,6 +9,7 @@ Feature: Mobile | Guest add to basket
     And The user navigates to "Erkek" "Yeni Gelenler" category
     And The user verifies redirected to "/erkek-yeni-gelenler" page
     And The user clicks any product
+    And The user closes popUps
     And The user chooses size
     And The user clicks "SİPARİŞİ TAMAMLA" button
     And The user verifies redirected to "/checkout" page
