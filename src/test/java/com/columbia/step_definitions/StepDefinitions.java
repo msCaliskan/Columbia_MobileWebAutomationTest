@@ -10,6 +10,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
+import java.util.List;
+
 public class StepDefinitions {
 
     AccountPage accountPage = new AccountPage();
@@ -195,4 +197,77 @@ public class StepDefinitions {
     public void theUserClosesPopUps() {
         categoryAndProductPage.closePopUp();
     }
+
+    @And("The user clicks Instagram button")
+    public void theUserClicksInstagramButton() {
+        homePage.clickInstagramButton();
+    }
+
+    @And("The user verifies redirected to Instagram page")
+    public void theUserVerifiesRedirectedToInstagramPage() {
+        homePage.verifyInstagramPage();
+    }
+
+    @And("The user clicks Facebook button")
+    public void theUserClicksFacebookButton() {
+        homePage.clickFacebookButton();
+    }
+
+    @And("The user verifies redirected to Facebook page")
+    public void theUserVerifiesRedirectedToFacebookPage() {
+        homePage.verifyFacebookPage();
+    }
+
+    @And("The user clicks Twitter button")
+    public void theUserClicksTwitterButton() {
+        homePage.clickTwitterButton();
+    }
+
+    @And("The user verifies redirected to Twitter page")
+    public void theUserVerifiesRedirectedToTwitterPage() {
+        homePage.verifyTwitterPage();
+    }
+
+    @And("The user clicks Youtube button")
+    public void theUserClicksYoutubeButton() {
+        homePage.clickYoutubeButton();
+
+    }
+
+    @And("The user verifies redirected to Youtube page")
+    public void theUserVerifiesRedirectedToYoutubePage() {
+        homePage.verifyYoutubePage();
+    }
+
+    @And("The user clicks Pinterest button")
+    public void theUserClicksPinterestButton() {
+        homePage.clickPinterestButton();
+    }
+
+    @And("The user verifies redirected to Pinterest page")
+    public void theUserVerifiesRedirectedToPinterestPage() {
+        homePage.verifyPinterestPage();
+    }
+
+    @And("The user clicks Linkedin button")
+    public void theUserClicksLinkedinButton() {
+        homePage.clickLinkedinButton();
+    }
+
+    @And("The user verifies redirected to Linkedin page")
+    public void theUserVerifiesRedirectedToLinkedinPage() {
+        homePage.verifyLinkedinPage();
+    }
+
+    @And("The user clicks {string} and verifies {string}")
+    public void theUserClicksAndVerifies(String button, String title) {
+        homePage.checkPageTitle(button,title);
+    }
+
+    @And("The user verifies footer menu names")
+    public void theUserVerifiesFooterMenuNames(List<String> footerMenuNames) {
+        homePage.checkFooterNames(footerMenuNames);
+    }
+
+
 }
