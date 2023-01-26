@@ -1,6 +1,6 @@
 Feature: Desktop | Footer links are addressed correctly or not?
 
-  @smoke1
+  @smoke
   Scenario Outline: Footer links validation
 
     Given The user visits Columbia homepage
