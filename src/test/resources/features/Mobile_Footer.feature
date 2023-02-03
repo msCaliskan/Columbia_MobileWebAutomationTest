@@ -1,4 +1,4 @@
-Feature: Desktop | Footer links are addressed correctly or not?
+Feature: Mobile | Footer links are addressed correctly or not?
 
   @smoke
   Scenario Outline: Footer links validation

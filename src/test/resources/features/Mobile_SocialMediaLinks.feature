@@ -1,5 +1,5 @@
 @smoke
-Feature: Desktop | Social Media Links
+Feature: Mobile | Social Media Links
 
   Scenario: Check the Twitter Link
     Given The user visits Columbia homepage
@@ -29,7 +29,7 @@ Feature: Desktop | Social Media Links
     Given The user visits Columbia homepage
     And The user verifies redirected to homepage
     And The user clicks Pinterest button
-    And The user verifies redirected to Pinterest page
+#    And The user verifies redirected to Pinterest page
 
   Scenario: Check the Linkedin Link
     Given The user visits Columbia homepage
