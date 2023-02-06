@@ -153,7 +153,7 @@ public class HomePage extends BasePage{
     }
 
     public void clickLoginButton(){
-        BrowserUtils.waitForClickablility(loginBtn_Loc,5);
+        BrowserUtils.waitFor(5);
         loginBtn_Loc.click();
         BrowserUtils.waitFor(1);
     }

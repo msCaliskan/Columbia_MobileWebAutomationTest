@@ -16,7 +16,7 @@ public class LoginRegisterPage extends BasePage{
     @FindBy(xpath = "//*[text()='Tekrar Gösterme']") public WebElement popUp_Loc;
 
     public void mobilLogin(){
-        BrowserUtils.waitFor(5);
+        BrowserUtils.waitFor(3);
 
         try {
             BrowserUtils.waitForClickablility(popUp_Loc,2);
