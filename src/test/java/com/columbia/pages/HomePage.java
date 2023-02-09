@@ -30,12 +30,11 @@ public class HomePage extends BasePage{
 
     @FindBy(xpath = "//*[@class='MuiTypography-root MuiTypography-h3 muirtl-14hb52n']") public List<WebElement> footerMenuNames_Loc;
 
-    @FindBy(xpath = "(//*[name()='svg'][@class='MuiSvgIcon-root jss227 jss229'])[1]") public WebElement kurumsalButton_Loc;
+    @FindBy(xpath = "(//*[@class='MuiIconButton-label'])[4]") public WebElement hakkimizdaButton_Loc;
 
-    @FindBy(xpath = "(//*[name()='svg'][@class='MuiSvgIcon-root jss227 jss237'])[1]") public WebElement yardimButton_Loc;
+    @FindBy(xpath = "(//*[@class='MuiIconButton-label'])[5]") public WebElement alisverisSecButton_Loc;
 
-    @FindBy(xpath = "//a[@class='MuiTypography-root MuiLink-root MuiLink-underlineNone jss193 MuiTypography-colorSecondary']") public List<WebElement> footerLinks_Loc;
-
+    @FindBy(xpath = "//*[contains(@class, 'MuiTypography-colorSecondary')]") public List<WebElement> footerLinks_Loc;
 
     @FindBy(css = "a[href='https://www.instagram.com/columbiasportswear_tr']") public WebElement instagramButton_Loc;
 
@@ -181,9 +180,9 @@ public class HomePage extends BasePage{
 
     public void checkPageTitle(String button, String title){
         BrowserUtils.waitFor(1);
-        kurumsalButton_Loc.click();
+        BrowserUtils.clickWithJS(hakkimizdaButton_Loc);
         BrowserUtils.waitFor(1);
-        yardimButton_Loc.click();
+        BrowserUtils.clickWithJS(alisverisSecButton_Loc);
         BrowserUtils.waitFor(1);
         for (int i = 0; i < footerLinks_Loc.size(); i++) {
             if (footerLinks_Loc.get(i).getText().contains(button)){
