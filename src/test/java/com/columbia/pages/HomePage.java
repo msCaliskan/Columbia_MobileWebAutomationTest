@@ -18,6 +18,8 @@ public class HomePage extends BasePage{
 
     @FindBy(xpath = "//span[text()='Kabul Ediyorum']") public WebElement cookies_Loc;
 
+    @FindBy(xpath = "//*[@class='ins-selectable-element ins-element-wrap ins-element-close-button']") public WebElement popUpp_Loc;
+
     @FindBy(xpath = "//*[@data-testid='header-account-button']") public WebElement loginBtn_Loc;
 
     @FindBy(css = "#email") public WebElement email_Loc;
@@ -48,7 +50,79 @@ public class HomePage extends BasePage{
 
     @FindBy(css = "a[href='https://www.linkedin.com/company/columbia-sportswear/']") public WebElement linkedinButton_Loc;
 
+    public void gotoHomePage(){
+        Driver.get().get(ConfigurationReader.get("url"));
 
+        BrowserUtils.waitFor(2);
+
+        try {
+            popUpp_Loc.click();
+        }catch (Exception e){
+            BrowserUtils.waitFor(1);
+        }
+
+        BrowserUtils.waitForClickablility(cookies_Loc,5);
+        cookies_Loc.click();
+        BrowserUtils.waitForClickablility(popUp2_Loc,5);
+        popUp2_Loc.click();
+        BrowserUtils.waitFor(1);
+    }
+
+    public static void checkHomePage(){
+        String expectedTitle ="Columbia Türkiye Online Shop";
+        String actualTitle = Driver.get().getTitle();
+        Assert.assertEquals(expectedTitle,actualTitle);
+    }
+
+    public void searchBox(String string){
+        searchBox_Loc.sendKeys(string+Keys.ENTER);
+        BrowserUtils.waitFor(1);
+    }
+
+    public void clickLoginButton(){
+        BrowserUtils.waitFor(2);
+        loginBtn_Loc.click();
+        BrowserUtils.waitFor(1);
+    }
+
+    public void clickGirisYap(){
+        BrowserUtils.waitForClickablility(girisYapBtn_Loc,5);
+        girisYapBtn_Loc.click();
+        BrowserUtils.waitFor(1);
+    }
+
+    public void clickHamburgerMenuButton(){
+        BrowserUtils.waitForClickablility(hamburgerMenuBtn_Loc,5);
+        hamburgerMenuBtn_Loc.click();
+        BrowserUtils.waitFor(1);
+    }
+
+    List<String> allNames = new ArrayList<>();
+    public void checkFooterNames(List<String> headerNames){
+
+        for (WebElement element : footerMenuNames_Loc) {
+            allNames.add(element.getText());
+        }
+        Assert.assertTrue(allNames.containsAll(headerNames));
+    }
+
+    public void checkPageTitle(String button, String title){
+        BrowserUtils.waitFor(1);
+        BrowserUtils.clickWithJS(hakkimizdaButton_Loc);
+        BrowserUtils.waitFor(1);
+        BrowserUtils.clickWithJS(alisverisSecButton_Loc);
+        BrowserUtils.waitFor(1);
+        for (int i = 0; i < footerLinks_Loc.size(); i++) {
+            if (footerLinks_Loc.get(i).getText().contains(button)){
+                BrowserUtils.clickWithJS(footerLinks_Loc.get(i));
+                BrowserUtils.waitForPageToLoad(10);
+                BrowserUtils.waitFor(2);
+                Assert.assertTrue("Search result value failed at instance ["+Driver.get().getTitle()+"]" ,Driver.get().getTitle().contains(title));
+                BrowserUtils.waitFor(2);
+                break;
+            }
+        }
+    }
 
     public void clickInstagramButton(){
         BrowserUtils.waitFor(2);
@@ -127,73 +201,4 @@ public class HomePage extends BasePage{
         String expectedTitle = "Columbia Sportswear Company | LinkedIn";
         Assert.assertEquals(expectedTitle,actualTitle);
     }
-
-    public void gotoHomePage(){
-        Driver.get().get(ConfigurationReader.get("url"));
-
-        BrowserUtils.waitFor(2);
-
-        BrowserUtils.waitForClickablility(cookies_Loc,5);
-        cookies_Loc.click();
-        BrowserUtils.waitForClickablility(popUp2_Loc,5);
-        popUp2_Loc.click();
-        BrowserUtils.waitFor(1);
-    }
-
-    public static void checkHomePage(){
-        String expectedTitle ="Columbia Türkiye Online Shop";
-        String actualTitle = Driver.get().getTitle();
-        Assert.assertEquals(expectedTitle,actualTitle);
-    }
-
-    public void searchBox(String string){
-        searchBox_Loc.sendKeys(string+Keys.ENTER);
-        BrowserUtils.waitFor(1);
-    }
-
-    public void clickLoginButton(){
-        BrowserUtils.waitFor(5);
-        loginBtn_Loc.click();
-        BrowserUtils.waitFor(1);
-    }
-
-    public void clickGirisYap(){
-        BrowserUtils.waitForClickablility(girisYapBtn_Loc,5);
-        girisYapBtn_Loc.click();
-        BrowserUtils.waitFor(1);
-    }
-
-    public void clickHamburgerMenuButton(){
-        BrowserUtils.waitForClickablility(hamburgerMenuBtn_Loc,5);
-        hamburgerMenuBtn_Loc.click();
-        BrowserUtils.waitFor(1);
-    }
-
-    List<String> allNames = new ArrayList<>();
-    public void checkFooterNames(List<String> headerNames){
-
-        for (WebElement element : footerMenuNames_Loc) {
-            allNames.add(element.getText());
-        }
-        Assert.assertTrue(allNames.containsAll(headerNames));
-    }
-
-    public void checkPageTitle(String button, String title){
-        BrowserUtils.waitFor(1);
-        BrowserUtils.clickWithJS(hakkimizdaButton_Loc);
-        BrowserUtils.waitFor(1);
-        BrowserUtils.clickWithJS(alisverisSecButton_Loc);
-        BrowserUtils.waitFor(1);
-        for (int i = 0; i < footerLinks_Loc.size(); i++) {
-            if (footerLinks_Loc.get(i).getText().contains(button)){
-                BrowserUtils.clickWithJS(footerLinks_Loc.get(i));
-                BrowserUtils.waitForPageToLoad(10);
-                BrowserUtils.waitFor(2);
-                Assert.assertTrue("Search result value failed at instance ["+Driver.get().getTitle()+"]" ,Driver.get().getTitle().contains(title));
-                BrowserUtils.waitFor(2);
-                break;
-            }
-        }
-    }
-
 }
